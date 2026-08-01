@@ -5,14 +5,13 @@ test.describe("login page tests", () => {
 
   let loginPage: LoginPage
   test.beforeEach("navigate to login url", async ({ page }) => {
-    await page.goto('https://testcms.reco-claims.ca/Login');
+    loginPage = new LoginPage(page)
+    await page.goto(`${process.env.BASE_URL}/Login`);
   })
 
   test('login validation', async ({ page }) => {
-    loginPage = new LoginPage(page)
     loginPage.login("info+programmanager@xlgclaims.com", 'Test1234!')
-    await expect(page.getByText('RECO CMS', { exact: true })).toBeVisible();
-    // Expect a title "to contain" a substring.
+    loginPage.verifyLogo()
   });
 
 })

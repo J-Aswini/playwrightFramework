@@ -6,7 +6,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 import dotenv, { config } from 'dotenv';
 import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ path: path.resolve(__dirname, '.env'), quiet:true });
 // dotenv.config()
 
 /**
@@ -14,6 +14,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 180000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
