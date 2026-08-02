@@ -1,10 +1,9 @@
-import { test } from '..src/config/fixtures.ts';
+import { test } from '../src/config/fixtures';
 import { LoginPage } from '../src/pages/loginPage';
 import { RolePage } from '../src/pages/rolePage';
 
 test.describe("role", () => {
 
-  let loginPage: LoginPage
   let rolePage: RolePage
   test.beforeEach("navigate to login url", async ({pageWithLogin}) => {
     rolePage = new RolePage(pageWithLogin)
