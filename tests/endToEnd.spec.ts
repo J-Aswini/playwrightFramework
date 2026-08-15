@@ -7,6 +7,7 @@ test.describe('end to end tests', ()=>{
 test('validate the carts data from DB in automationPractice', async({page})=>{
     await page.goto('https://automationexercise.com/');
     const result = await pool.query('select * from products')
+    //we are sending SQL query to the database and getting the result
     const row = result.rows
     console.log(row)
     //.single-products
