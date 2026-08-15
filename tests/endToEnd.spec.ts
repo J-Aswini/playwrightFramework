@@ -1,11 +1,18 @@
 import {test, expect} from '@playwright/test'
 import {pool} from '../src/utils/dbUtils'
-import { request } from 'http';
+import { allure } from 'allure-playwright';
+
 
 test.describe('end to end tests', ()=>{
 
 test('validate the carts data from DB in automationPractice', async({page})=>{
+    await allure.owner('sara')
+    await allure.severity('critical')
+    await allure.feature('DB testing')
+    await allure.story('validate the carts data from DB in automationPractice')
+    await allure.step('navigate to the automationexercise website', async()=>{  
     await page.goto('https://automationexercise.com/');
+    })
     const result = await pool.query('select * from products')
     //we are sending SQL query to the database and getting the result
     const row = result.rows
